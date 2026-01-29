@@ -1,0 +1,60 @@
+:root {
+  /* --- Color --- */
+  --color-coffee-50: #fcf8ee;
+  --color-coffee-100: #ebe7de;
+  --color-coffee-200: #ead59d;
+  --color-coffee-300: #dfbb6a;
+  --color-coffee-400: #d7a648;
+  --color-coffee-500: #ce8a32;
+  --color-coffee-600: #b66b29;
+  --color-coffee-700: #975026;
+  --color-coffee-800: #7c3f24;
+  --color-coffee-900: #5e311e;
+  --color-coffee-950: #3a1a0e;
+
+  /* --- Tipografía --- */
+  --font-family-base: "Outfit", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-coffee-100);
+}
+
+/* BLOCK: header */
+.header {
+  position: relative;
+  height: 18rem;
+  /* Evitamos padding-bottom fijo si usamos height, para no duplicar espacio */
+}
+
+/* ELEMENT: div (Fondo y Capas) */
+.header__div {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+/* MODIFIER: overlay (Variación del div para opacidad) */
+.header__div--overlay {
+  background-color: rgb(0 0 0 / 0.6);
+  /* No repetimos absolute e inset porque ya vienen de .header__div */
+}
+
+/* ELEMENT: nav (Contenedor de logo/navegación) */
+.header__nav {
+  position: relative;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-top: 20px;
+}
+
+/* ELEMENT: svg (Icono del logo) */
+.header__svg {
+  width: 288px;
+  display: block; /* Evita espacios extra debajo del SVG */
+}

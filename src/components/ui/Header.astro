@@ -1,0 +1,18 @@
+---
+import Logo from '@assets/logo.svg'
+
+interface Props {
+  bgImage: string
+}
+
+const { bgImage } = Astro.props;
+---
+
+<header class="header">
+  <div class="header__div" style={{ backgroundImage: `url(${bgImage})` }}></div>
+  <div class="header__div header__div--overlay"></div>
+
+  <div class="header__nav">
+    <Logo class="header__svg" />
+  </div>
+</header>
