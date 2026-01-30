@@ -3,10 +3,11 @@ import '@styles/global.css';
 import Header from '@components/ui/Header.astro';
 
 interface Props {
-  title: string
+  title: string,
+  subtitle: string,
   bgImage: string
 }
-const {title, bgImage} = Astro.props;
+const {title, subtitle, bgImage} = Astro.props;
 ---
 
 
@@ -22,7 +23,12 @@ const {title, bgImage} = Astro.props;
     <title>Cafetería desde 1939: </title>
   </head>
   <body>
-    <Header bgImage={bgImage}/>
-    <slot/>
+    <Header
+    bgImage={bgImage}
+    subtitle={subtitle}/>
+    <main class="main" >
+      <slot/>
+    </main>
+      <slot name="after-main.content"/>
   </body>
 </html>

@@ -1,0 +1,23 @@
+---
+const navigation = [
+  {name: 'Inicio', href:'/'},
+  {name: 'Nosotros', href:'/nosotros/'},
+  {name: 'Blog', href:'/blog/'},
+  {name: 'Proceso', href:'/proceso/'},
+  {name: 'Menú', href:'/menu/'},
+  {name: 'Galería', href:'/galeria/'},
+  {name: 'Contacto', href:'/contacto/'},
+]
+---
+
+<nav class="nav">
+  <ul class="nav__ul">
+    {navigation.map(item => (
+      <li class="nav__li">
+        <a href={item.href} class="nav__a">
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

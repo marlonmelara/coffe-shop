@@ -1,5 +1,5 @@
 :root {
-  /* --- Color --- */
+  /* --- Color Palette --- */
   --color-coffee-50: #fcf8ee;
   --color-coffee-100: #ebe7de;
   --color-coffee-200: #ead59d;
@@ -12,49 +12,162 @@
   --color-coffee-900: #5e311e;
   --color-coffee-950: #3a1a0e;
 
-  /* --- Tipografía --- */
+  /* --- Typography --- */
   --font-family-base: "Outfit", sans-serif;
   --font-size-base: 1rem;
   --font-size-sm: 0.875rem;
-  --font-size-lg: 1.25rem;
+  --font-size-lg: 1.125rem; /* Ajustado a 18px para nav-link */
 }
 
+/* /Reset básico */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0 solid;
+}
+
+/* --- Base Reset --- */
 body {
   font-family: var(--font-family-base);
   background-color: var(--color-coffee-100);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* BLOCK: header */
+.main {
+  /* Box Model & Visuals */
+  background-color: white;
+  max-width: 1280px; /* max-w-7xl */
+  margin-inline: auto;
+  padding: 5rem; /* p-20 (80px) */
+
+  /* Posicionamiento relativo para que el margin negativo
+     y el z-index funcionen correctamente sobre el header */
+  position: relative;
+  z-index: 10;
+}
+
+/* RESPONSIVE: Desktop (lg: 1024px) */
+@media (min-width: 1024px) {
+  .main {
+    /* Equivalente a lg:-mt-20 */
+    margin-top: -5rem;
+  }
+}
+
 .header {
   position: relative;
-  height: 18rem;
-  /* Evitamos padding-bottom fijo si usamos height, para no duplicar espacio */
+  min-height: 18rem; /* h-72 equivalente */
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 288px;
 }
 
-/* ELEMENT: div (Fondo y Capas) */
+/* ELEMENT: div (Fondo dinámico) */
 .header__div {
   position: absolute;
   inset: 0;
   background-position: center;
   background-size: cover;
+  z-index: -2;
 }
 
-/* MODIFIER: overlay (Variación del div para opacidad) */
+/* MODIFIER: overlay (Capa de opacidad) */
 .header__div--overlay {
   background-color: rgb(0 0 0 / 0.6);
-  /* No repetimos absolute e inset porque ya vienen de .header__div */
+  z-index: -1;
 }
 
-/* ELEMENT: nav (Contenedor de logo/navegación) */
+/* ELEMENT: nav (Contenedor de layout para Logo y Menú) */
 .header__nav {
   position: relative;
-  max-width: 1280px;
+  max-width: 1280px; /* max-w-7xl */
   margin-inline: auto;
-  padding-top: 20px;
+  width: 100%;
+  padding: 1.5rem 1rem; /* py-6 aprox y padding lateral */
+
+  /* Layout Mobile: Vertical y Centrado */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-/* ELEMENT: svg (Icono del logo) */
+/* ELEMENT: svg (Logo) */
 .header__svg {
-  width: 288px;
-  display: block; /* Evita espacios extra debajo del SVG */
+  width: 288px; /* w-72 */
+  height: auto;
+  display: block;
+}
+
+.header__h1 {
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+/* RESPONSIVE: Desktop (lg: 1024px) */
+@media (min-width: 1024px) {
+  .header__nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+}
+
+.nav {
+  display: block;
+}
+
+/* ELEMENT: ul (Lista de enlaces) */
+.nav__ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Mobile: Alineación vertical */
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ELEMENT: li (Item de lista) */
+.nav__li {
+  display: inline-flex;
+}
+
+/* ELEMENT: a (Enlace individual) */
+.nav__a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+
+  /* Tipografía (Basado en tu diseño original) */
+  text-transform: uppercase;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+
+  /* Interacción */
+  transition: color 0.3s ease;
+}
+
+.nav__a:hover {
+  color: var(--color-coffee-400);
+}
+
+/* MODIFIER: active (Página actual) */
+.nav__a--active {
+  color: var(--color-coffee-500);
+}
+
+/* RESPONSIVE: Desktop (lg: 1024px) */
+@media (min-width: 1024px) {
+  .nav__ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }

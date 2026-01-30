@@ -1,11 +1,13 @@
 ---
 import Logo from '@assets/logo.svg'
+import MainNav from './MainNav.astro';
 
 interface Props {
-  bgImage: string
+  bgImage: string,
+  subtitle: string
 }
 
-const { bgImage } = Astro.props;
+const { subtitle, bgImage } = Astro.props;
 ---
 
 <header class="header">
@@ -13,6 +15,9 @@ const { bgImage } = Astro.props;
   <div class="header__div header__div--overlay"></div>
 
   <div class="header__nav">
+    <a href="/">
     <Logo class="header__svg" />
-  </div>
+    </a>
+    <MainNav /> </div>
+    <h1 class="header__h1">{subtitle}</h1>
 </header>
